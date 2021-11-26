@@ -4,20 +4,20 @@ function estaAutenticado(){
     if(localStorage.getItem("token") != null){
         console.log("autenticado");
     }else{
-        document.location.href="../login.html";
+        document.location.href="../consumir-API/login.html";
     }
 }
 
-const toggleButton  = document.getElementById('toggle-button');
-const navilist = document.getElementById('navi-list');
+/* const toggleButton  = document.getElementById('toggle-button');
+const navilist = document.getElementById('navi-list'); */
 
-const cerrarSesionButton = document.getElementById('cerrarSesion-button');
+const cerrarSesion = document.getElementById('cerrarSesion-button');
 
-toggleButton.addEventListener('click', ()=>{
+/* toggleButton.addEventListener('click', ()=>{
     navilist.classList.toggle('active');
-});
+}); */
 
-cerrarSesionButton.addEventListener('click',()=>{
+cerrarSesion.addEventListener('click',()=>{
     localStorage.removeItem('token');
-    document.location.href="../login.html";
+    document.location.href="../consumir-API/login.html";
 });

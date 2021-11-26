@@ -2,13 +2,13 @@ document.onload = estaAutenticado();
 
 function estaAutenticado(){
     if(localStorage.getItem("token") != null){
-        document.location.href="../index.html";
+        document.location.href="../consumir-API/home.html";
     }else{
         console.log("no autenticado");
     }
 }
 
-const formularioLogin = document.querySelector('#formulario-login');
+const formularioLogin = document.querySelector('#form-login');
 
 localStorage.setItem("urlApi","http://webapi.andromedacorp.3hcps.info/api/");
 url = localStorage.getItem("urlApi");
@@ -44,7 +44,7 @@ function auth(usuario, password){//funcion para loggearse
             }else{
                 localStorage.setItem("token",token); //almacenamos el token en el localstorage
                 formularioLogin.reset();
-                document.location.href="../Home.html";//redireccionamos al index
+                document.location.href="../consumir-API/home.html";//redireccionamos al Home
             }
         })
 }
