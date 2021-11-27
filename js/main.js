@@ -5,6 +5,7 @@ function estaAutenticado(){
         console.log("autenticado");
     }else{
         document.location.href="../consumir-API/login.html";
+        alert("Debe estar logeado");
     }
 }
 
