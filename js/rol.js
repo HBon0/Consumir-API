@@ -40,11 +40,15 @@ function GetIndex(){
                 <tr>
                     <td>${item.nombre}</td>
                     <td>
-                        <div>
-                            <button type="button" data-id="${item.id}" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-cerrar" onclick="Eliminar(${item.id})">🗑 Eliminar</button>
-                         </div>
-                         <div>   
-                            <button type="button" data-id="${item.id}" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal-modificar" onclick="AbrirModificar(${item.id})">🖉 Editar</button>
+                        <div class="container">
+                            <div class="row row-cols-auto">
+                                <div class="col">
+                                    <button type="button" data-id="${item.id}" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-cerrar" onclick="Eliminar(${item.id})">🗑 Eliminar</button>
+                                </div>
+                                <div class="col">   
+                                    <button type="button" data-id="${item.id}" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal-modificar" onclick="AbrirModificar(${item.id})">🖉 Editar</button>
+                                </div>
+                            </div>
                         </div>
                     </td>
                 </tr>
