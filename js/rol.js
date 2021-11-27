@@ -1,31 +1,4 @@
 
-//codigo para modal formulario crear
-const abrirCrear = document.getElementById('crearRol');
-const cerrarCrear = document.getElementById('cerrarCrear');
-const modal_crear = document.getElementById('modal_crear');
-
-/* abrirCrear.addEventListener('click', ()=>{
-    modal_crear.classList.add('show')
-});
-
-cerrarCrear.addEventListener('click', ()=>{
-    modal_crear.classList.remove('show')
-}); */
-
-//codigo para modal formulario eliminar
-const modal_container_eliminar = document.getElementById('modal_container_eliminar');
-
-function openEliminar(id){
-  modal_container_eliminar.classList.add('show')
-
-  this.idRol = id;
-}
-
-function closeEliminar(){
-  modal_container_eliminar.classList.remove('show')
-}
-// --------------------------------------------------------------------------
-
 // codigo para modal formulario Modificar
 const modal_container_modificar = document.getElementById('modal_container_modificar');
 
@@ -38,7 +11,6 @@ function openModificar(id) {
 function closeModificar(){
   modal_container_modificar.classList.remove('show')
 }
-
 
 //----------------Obtener todos los roles-------------------------------------------------------------------------------------------------
 const body = document.querySelector("#body");
@@ -63,17 +35,16 @@ function GetIndex(){
             let html = "";
             const N = 0;
 
-            console.log(roles);
             this.roles.forEach(item => {
                 const tr = `
                 <tr>
                     <td>${item.nombre}</td>
                     <td>
                         <div>
-                            <button type="button" data-id="${item.id}" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-cerrar"(${item.id})">🗑 Eliminar</button>
+                            <button type="button" data-id="${item.id}" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-cerrar" onclick="Eliminar(${item.id})">🗑 Eliminar</button>
                          </div>
                          <div>   
-                            <button type="button" data-id="${item.id}" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal-modificar"(${item.id})">🖉 Editar</button>
+                            <button type="button" data-id="${item.id}" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal-modificar" onclick="AbrirModificar(${item.id})">🖉 Editar</button>
                         </div>
                     </td>
                 </tr>
@@ -84,6 +55,7 @@ function GetIndex(){
             body.innerHTML = html;
         })
 }
+//-------------------------------------------Fin Obtener--------------------------------
 
 //-------------Funcion para crear Rol usando Fetch----------------------------------------------------------------------------------------------------
 function Crear() { //Creamos una nueva funcion llamada crear la cual obtendra el valor de la caja de Texto en el modal y se la enviara a la funcion CrearRol
@@ -117,17 +89,21 @@ function CrearRol(nombre){
           }
       });
 }
+//-----------------------------Fin Crear------------------------------------------------------------------------------
+
 //---------------Funcion para Modificar Rol usando Fetch--------------------------------------------------------------------------------------------------
-/* formulariomodificar = document.querySelector("#formulario-modificar");
+var formModificar = document.querySelector("#form-modificar");
 
-formulariomodificar.addEventListener('submit', (e)=>{//capturamos el evento
-  e.preventDefault();//cancela el evento por defecto
+function AbrirModificar(id) {
+    this.idRol = id;
+}
 
-  const id = this.idRol;
-  const nombre = document.querySelector('#modificar-nombre').value;
-  
-   ModificarRol(id, nombre)//mandamos a llamar al metodo
-})
+function Modificar() {
+    const id = this.idRol;
+    const nombre = document.querySelector("#modificar-nombre").value;
+
+    ModificarRol(id, nombre);
+}
 
 function ModificarRol(id, nombre){
     const Rol = {
@@ -150,11 +126,16 @@ function ModificarRol(id, nombre){
           alert('No autorizado');
         }else{
             alert('Ocurrio un error');
-            formularioCrear.reset();
+            formModificar.reset();
         }
     });
 }
+//-----------------------Fin Modificar---------------------------------------------------------------------------
+
 //-----------------Funcion para Eliminar Rol usando Fetch------------------------------------------------------------------------
+function Eliminar(id) {
+    this.idRol = id;
+}
 
 function EliminarRol(){
     fetch(this.url + "Rol/" + this.idRol,{
@@ -167,6 +148,7 @@ function EliminarRol(){
         console.log(res);
         if(res.status == 200){
           location.reload()
+          console.log("Eliminado");
         }else if(res.status == 401){
           alert('No autorizado');
         }else{
@@ -174,5 +156,5 @@ function EliminarRol(){
             formularioCrear.reset();
         }
     });
-} */
+} 
 // --------------------------------------------------------------------------------------------------------------------
