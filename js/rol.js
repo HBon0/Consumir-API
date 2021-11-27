@@ -1,17 +1,4 @@
 
-// codigo para modal formulario Modificar
-const modal_container_modificar = document.getElementById('modal_container_modificar');
-
-function openModificar(id) {
-  modal_container_modificar.classList.add('show')
-
-  this.idRol = id;
-}
-
-function closeModificar(){
-  modal_container_modificar.classList.remove('show')
-}
-
 //----------------Obtener todos los roles-------------------------------------------------------------------------------------------------
 const body = document.querySelector("#body");
 
